@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <guolele-v2>
+            <template v-slot:title>
+                {{article.title}}
+            </template>
+            <template v-slot:author>
+                {{article.author}}
+            </template>
+            <template v-slot:date>
+                {{article.publishDate}}
+            </template>
+            {{article.content}}
+        </guolele-v2>
+    </div>
+    <script>
+
+        Vue.component('guolele-v2',{
+            template:'<div>'+
+                '<h1><slot name="title"></slot></h1>'+
+                '<h2><slot name="author"></slot></h2>'+
+                '<h3><slot name="date"></slot></h3>'+
+                '<p><slot></slot></p>'+
+            '</div>'
+        });
+
+        var app = new Vue({
+            el:"#app",
+            data:{
+               article:{
+                    title:"论乔碧罗的真实年龄",
+                    author:"郭乐乐",
+                    publishDate:"2019-12-10",
+                    content:"根据我多年的开车经验，我断定乔女士和我差不多大，也就20岁。并且，乔女士和我心意。"
+                }
+            }
+        })
+    </script>
+    <style>
+    
+    </style>
+</body>
+</html>
